@@ -1,0 +1,10 @@
+curl --request POST \
+  --url https://api.cohere.ai/v2/embed \
+  --header "Authorization: Bearer $UNITYSVC_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "{{offering.name}}",
+    "input_type": "classification",
+    "embedding_types": ["float"],
+    "texts": ["hello", "goodbye"]
+  }'

@@ -1,0 +1,26 @@
+{
+  "currency": "USD",
+  "description": "C4Ai Aya Vision 8B language model",
+  "details": {
+    "object": "model",
+    "owned_by": "cohere"
+  },
+  "display_name": "C4Ai Aya Vision 8B",
+  "name": "c4ai-aya-vision-8b",
+  "schema": "offering_v1",
+  "service_type": "vision_language_model",
+  "status": "ready",
+  "tags": [
+    "ai",
+    "gateway",
+    "byok"
+  ],
+  "time_created": "2026-01-26T01:30:44.467Z",
+  "upstream_access_interfaces": {
+    "Cohere API": {
+      "access_method": "http",
+      "base_url": "https://api.cohere.ai/",
+      "rate_limits": []
+    }
+  }
+}

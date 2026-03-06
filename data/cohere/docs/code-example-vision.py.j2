@@ -1,0 +1,29 @@
+import os
+import base64
+import requests
+
+UNITYSVC_API_KEY = os.getenv("UNITYSVC_API_KEY")
+
+url = "https://api.cohere.ai/v1/vision"
+
+# Path to image inside your repo
+image_path = "istockphoto-184276818-612x612.jpg"
+
+# Load & encode image
+with open(image_path, "rb") as f:
+    image_b64 = base64.b64encode(f.read()).decode("utf-8")
+
+payload = {
+    "model": "{{offering.details.model_name}}",
+    "image": image_b64,
+    "prompt": "Describe this image."
+}
+
+headers = {
+    "Authorization": f"Bearer {UNITYSVC_API_KEY}",
+    "Content-Type": "application/json"
+}
+
+response = requests.post(url, headers=headers, json=payload)
+
+print(response.text)

@@ -1,0 +1,38 @@
+{
+  "currency": "USD",
+  "description": "Embed English V3.0 language model",
+  "details": {
+    "contextLength": 1024,
+    "litellm_provider": "cohere",
+    "max_input_tokens": 1024,
+    "max_tokens": 1024,
+    "mode": "embedding",
+    "object": "model",
+    "owned_by": "cohere"
+  },
+  "display_name": "Embed English V3.0",
+  "name": "embed-english-v3.0",
+  "payout_price": {
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "input": "0.09999999999999999",
+    "output": "0",
+    "reference": null,
+    "type": "one_million_tokens"
+  },
+  "schema": "offering_v1",
+  "service_type": "embedding",
+  "status": "ready",
+  "tags": [
+    "ai",
+    "gateway",
+    "byok"
+  ],
+  "time_created": "2026-01-26T01:30:44.491Z",
+  "upstream_access_interfaces": {
+    "Cohere API": {
+      "access_method": "http",
+      "base_url": "https://api.cohere.ai/",
+      "rate_limits": []
+    }
+  }
+}

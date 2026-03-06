@@ -1,0 +1,92 @@
+{
+  "currency": "USD",
+  "documents": {
+    "Connectivity test": {
+      "category": "connectivity_test",
+      "description": "Connectivity test",
+      "file_path": "../../docs/connectivity.sh.j2",
+      "is_active": true,
+      "is_public": false,
+      "mime_type": "bash"
+    },
+    "How to use this model": {
+      "category": "getting_started",
+      "file_path": "../../docs/description.md",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "markdown"
+    },
+    "JavaScript code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code-example.js.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "javascript"
+    },
+    "Python code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code-example.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "python"
+    },
+    "cURL code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code-example.sh.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "bash"
+    }
+  },
+  "list_price": {
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "input": "1",
+    "output": "2",
+    "reference": null,
+    "type": "one_million_tokens"
+  },
+  "schema": "listing_v1",
+  "service_options": {
+    "ops_testing_parameters": {
+      "api_key": "${ secrets.COHERE_API_KEY }"
+    }
+  },
+  "status": "ready",
+  "time_created": "2026-01-26T01:30:44.487Z",
+  "user_access_interfaces": {
+    "Provider API": {
+      "access_method": "http",
+      "base_url": "${GATEWAY_BASE_URL}/p/cohere",
+      "routing_key": {
+        "model": "command-r7b-arabic-02-2025"
+      }
+    }
+  },
+  "user_parameters_schema": {
+    "description": "Access service with your own api-key",
+    "properties": {
+      "api_key": {
+        "default": "",
+        "title": "API Key (COHERE_API_KEY)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "api_key"
+    ],
+    "title": "Be Your Own Provider",
+    "type": "object"
+  },
+  "user_parameters_ui_schema": {
+    "api_key": {
+      "ui:description": "Your API key will be securely stored as secret 'COHERE_API_KEY'",
+      "ui:options": {
+        "secret": "COHERE_API_KEY"
+      },
+      "ui:placeholder": "Enter your API key"
+    }
+  }
+}

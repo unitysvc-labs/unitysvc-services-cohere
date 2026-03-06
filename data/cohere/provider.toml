@@ -1,0 +1,16 @@
+contact_email = "team@cohere.ai"
+homepage = "https://www.cohere.com/"
+name = "cohere"
+display_name = "Cohere"
+schema = "provider_v1"
+status = "ready"
+terms_of_service = "https://cohere.com/terms-of-use"
+time_created = "2025-08-25T00:00:00Z"
+
+[services_populator]
+command = 'scripts/update_services.py'
+requirements = ['any-llm-sdk[cohere]', 'requests', 'unitysvc-services']
+
+[services_populator.envs]
+# API key should be provided via COHERE_API_KEY environment variable
+# (from GitHub secret or local environment)

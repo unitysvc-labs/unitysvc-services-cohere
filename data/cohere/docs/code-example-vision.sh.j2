@@ -1,0 +1,20 @@
+curl https://api.cohere.ai/v1/vision \
+  -H "Authorization: Bearer $UNITYSVC_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"model\": \"{{offering.name}}\",
+    \"messages\": [
+      {
+        \"role\": \"user\",
+        \"content\": [
+          { \"type\": \"text\", \"text\": \"Describe this image.\" },
+          {
+            \"type\": \"image_url\",
+            \"image_url\": {
+              \"url\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAABccqhmAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACpklEQVR4nO3asW7bMBiG4aCi2dZ2If//18FAN1rCkcmZomrZnZPcTJS3BM4tiTqcKoy0nzzvGEGZmZmZmZmZmf0f4PIDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDAYDaYLbsubtqSWL6aN2b9n9rm2e5rm+tvtnFtjjPeKun+W2vbTnrt3YlJXVk2v+tnmZZZmZmZmZmZmbm9k8IMBgMhgKs7xWy/t2/gfX5YvU1f+f+xivW2JbWmfTfzj/3B9vqpeo2xqx8vVbN1u1qM7x7XZf8/0tn2s9o+nl6yq7wf/6Jt6y9Ymt2K34xZ/suN+Ofbqv8uLvL/5P7IzPv7+r9yrv8Ht3v9RZr9Krf2ZrV8vnzH+6drtPt2v++2D+u1/7bTXqdkO/9/2/tfY7ut6/tMmk6wTAYDAaDPZl9z6vxfWb9h9t9un9I/SB+W/0mv69v/ltw6pcrrvt2pZbJrtttGpJbB+fNPH3eN0++67Wa2xXvHaJp8n3z9tN/m/Wyq8frtYbanutnufzH92mb5ZJu1ddJvXMcBgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMhgMh+N9f4By5U5UUAqHkAAAAASUVORK5CYII=\"
+            }
+          }
+        ]
+      }
+    ]
+  }"

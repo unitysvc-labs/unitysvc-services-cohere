@@ -1,0 +1,33 @@
+import os
+import requests
+
+UNITYSVC_API_KEY = os.getenv("UNITYSVC_API_KEY")
+
+url = "https://api.cohere.ai/compatibility/v1/chat/completions"
+
+payload = {
+    "provider": "rest",
+    "model": "{{offering.name}}",
+    "input": {
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Say this is a test and tell me a joke."
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+headers = {
+    "Authorization": f"Bearer {UNITYSVC_API_KEY}",
+    "Content-Type": "application/json",
+}
+
+response = requests.post(url, headers=headers, json=payload)
+
+print(response.text)

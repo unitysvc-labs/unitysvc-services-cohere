@@ -1,0 +1,39 @@
+{
+  "currency": "USD",
+  "description": "Command A Vision 07 2025 language model",
+  "details": {
+    "contextLength": 4096,
+    "litellm_provider": "cohere",
+    "max_input_tokens": 4096,
+    "max_output_tokens": 4096,
+    "max_tokens": 4096,
+    "mode": "completion",
+    "object": "model",
+    "owned_by": "cohere"
+  },
+  "display_name": "Command A Vision 07 2025",
+  "name": "command-a-vision-07-2025",
+  "payout_price": {
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "input": "1",
+    "output": "2",
+    "reference": null,
+    "type": "one_million_tokens"
+  },
+  "schema": "offering_v1",
+  "service_type": "vision_language_model",
+  "status": "ready",
+  "tags": [
+    "ai",
+    "gateway",
+    "byok"
+  ],
+  "time_created": "2026-01-26T01:30:44.460Z",
+  "upstream_access_interfaces": {
+    "Cohere API": {
+      "access_method": "http",
+      "base_url": "https://api.cohere.ai/",
+      "rate_limits": []
+    }
+  }
+}
