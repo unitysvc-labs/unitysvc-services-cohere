@@ -20,6 +20,7 @@
     "Cohere API": {
       "access_method": "http",
       "base_url": "https://api.cohere.ai/",
+      "api_key": "${ customer_secrets.COHERE_API_KEY }",
       "rate_limits": []
     }
   }
