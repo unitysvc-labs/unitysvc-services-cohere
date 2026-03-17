@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "embedding"
+  ],
   "currency": "USD",
   "description": "Embed English V3.0 Image language model",
   "details": {
@@ -13,10 +16,9 @@
   "display_name": "Embed English V3.0 Image",
   "name": "embed-english-v3.0-image",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "input": "0.09999999999999999",
+    "description": "Service provider charges $0.1 / $0 per 1M input/output tokens",
+    "input": "0",
     "output": "0",
-    "reference": null,
     "type": "one_million_tokens"
   },
   "schema": "offering_v1",
@@ -31,9 +33,12 @@
   "upstream_access_interfaces": {
     "Cohere API": {
       "access_method": "http",
-      "base_url": "https://api.cohere.ai/",
       "api_key": "${ customer_secrets.COHERE_API_KEY }",
-      "rate_limits": []
+      "base_url": "https://api.cohere.ai/",
+      "rate_limits": [],
+      "routing_key": {
+        "model": "embed-english-v3.0-image"
+      }
     }
   }
 }

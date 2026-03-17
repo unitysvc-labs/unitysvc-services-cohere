@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "Tiny Aya Fire language model",
   "details": {
@@ -19,9 +22,12 @@
   "upstream_access_interfaces": {
     "Cohere API": {
       "access_method": "http",
-      "base_url": "https://api.cohere.ai/",
       "api_key": "${ customer_secrets.COHERE_API_KEY }",
-      "rate_limits": []
+      "base_url": "https://api.cohere.ai/",
+      "rate_limits": [],
+      "routing_key": {
+        "model": "tiny-aya-fire"
+      }
     }
   }
 }

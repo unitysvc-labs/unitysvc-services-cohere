@@ -85,21 +85,39 @@ class ModelSource:
         if "object" in model_info:
             details["object"] = model_info["object"]
 
-        # Extract pricing
+        # Extract upstream pricing for description, but set prices to 0 for BYOK
         pricing = None
         if model_data:
             if "input_cost_per_token" in model_data and "output_cost_per_token" in model_data:
-                input_price = float(
-                    model_data["input_cost_per_token"]) * 1_000_000
-                output_price = float(
-                    model_data["output_cost_per_token"]) * 1_000_000
+                input_price = round(float(
+                    model_data["input_cost_per_token"]) * 1_000_000, 4)
+                output_price = round(float(
+                    model_data["output_cost_per_token"]) * 1_000_000, 4)
+                price_desc = (
+                    f"Service provider charges "
+                    f"${self._format_price(input_price)} / "
+                    f"${self._format_price(output_price)} "
+                    f"per 1M input/output tokens"
+                )
                 pricing = {
                     "type": "one_million_tokens",
-                    "input": self._format_price(input_price),
-                    "output": self._format_price(output_price),
-                    "description": "Pricing Per 1M Tokens Input/Output",
-                    "reference": None,
+                    "input": "0",
+                    "output": "0",
+                    "description": price_desc,
                 }
+                # Include cached_input if available
+                if "cache_read_input_token_cost" in model_data:
+                    cached_price = round(float(
+                        model_data["cache_read_input_token_cost"]) * 1_000_000, 4)
+                    pricing["cached_input"] = "0"
+                    price_desc = (
+                        f"Service provider charges "
+                        f"${self._format_price(input_price)} / "
+                        f"${self._format_price(output_price)} / "
+                        f"${self._format_price(cached_price)} "
+                        f"per 1M input/output/cached tokens"
+                    )
+                    pricing["description"] = price_desc
 
         return {
             # Directory name uses -byok suffix (used by populate_from_iterator)
