@@ -61,7 +61,7 @@
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",
-      "base_url": "${GATEWAY_BASE_URL}/p/cohere",
+      "base_url": "${API_GATEWAY_BASE_URL}/p/cohere",
       "routing_key": {
         "model": "embed-multilingual-light-v3.0-image"
       }
