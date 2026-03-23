@@ -10,9 +10,7 @@
     "max_input_tokens": 4096,
     "max_output_tokens": 4096,
     "max_tokens": 4096,
-    "mode": "rerank",
-    "object": "model",
-    "owned_by": "cohere"
+    "mode": "rerank"
   },
   "display_name": "Rerank Multilingual V3.0",
   "name": "rerank-multilingual-v3.0",

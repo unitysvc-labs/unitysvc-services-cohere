@@ -1,13 +1,13 @@
 {
   "capabilities": [
-    "vision_language_model"
+    "llm",
+    "text-generation",
+    "vision",
+    "image-text-to-text"
   ],
   "currency": "USD",
   "description": "C4Ai Aya Vision 8B language model",
-  "details": {
-    "object": "model",
-    "owned_by": "cohere"
-  },
+  "details": {},
   "display_name": "C4Ai Aya Vision 8B",
   "name": "c4ai-aya-vision-8b",
   "schema": "offering_v1",

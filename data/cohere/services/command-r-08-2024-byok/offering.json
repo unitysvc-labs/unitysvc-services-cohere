@@ -1,6 +1,8 @@
 {
   "capabilities": [
-    "llm"
+    "llm",
+    "text-generation",
+    "tools"
   ],
   "currency": "USD",
   "description": "Command R 08 2024 language model",
@@ -10,9 +12,7 @@
     "max_input_tokens": 128000,
     "max_output_tokens": 4096,
     "max_tokens": 4096,
-    "mode": "chat",
-    "object": "model",
-    "owned_by": "cohere"
+    "mode": "chat"
   },
   "display_name": "Command R 08 2024",
   "name": "command-r-08-2024",

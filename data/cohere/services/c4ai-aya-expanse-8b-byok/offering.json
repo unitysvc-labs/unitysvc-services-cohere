@@ -1,13 +1,11 @@
 {
   "capabilities": [
-    "llm"
+    "llm",
+    "text-generation"
   ],
   "currency": "USD",
   "description": "C4Ai Aya Expanse 8B language model",
-  "details": {
-    "object": "model",
-    "owned_by": "cohere"
-  },
+  "details": {},
   "display_name": "C4Ai Aya Expanse 8B",
   "name": "c4ai-aya-expanse-8b",
   "schema": "offering_v1",

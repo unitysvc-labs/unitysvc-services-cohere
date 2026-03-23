@@ -1,13 +1,11 @@
 {
   "capabilities": [
-    "llm"
+    "llm",
+    "text-generation"
   ],
   "currency": "USD",
   "description": "Tiny Aya Fire language model",
-  "details": {
-    "object": "model",
-    "owned_by": "cohere"
-  },
+  "details": {},
   "display_name": "Tiny Aya Fire",
   "name": "tiny-aya-fire",
   "schema": "offering_v1",

@@ -9,9 +9,7 @@
     "litellm_provider": "cohere",
     "max_input_tokens": 1024,
     "max_tokens": 1024,
-    "mode": "embedding",
-    "object": "model",
-    "owned_by": "cohere"
+    "mode": "embedding"
   },
   "display_name": "Embed English Light V3.0",
   "name": "embed-english-light-v3.0",

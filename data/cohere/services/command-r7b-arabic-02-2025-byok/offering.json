@@ -1,6 +1,8 @@
 {
   "capabilities": [
-    "llm"
+    "llm",
+    "text-generation",
+    "tools"
   ],
   "currency": "USD",
   "description": "Command R7B Arabic 02 2025 language model",
@@ -10,9 +12,7 @@
     "max_input_tokens": 4096,
     "max_output_tokens": 4096,
     "max_tokens": 4096,
-    "mode": "completion",
-    "object": "model",
-    "owned_by": "cohere"
+    "mode": "completion"
   },
   "display_name": "Command R7B Arabic 02 2025",
   "name": "command-r7b-arabic-02-2025",

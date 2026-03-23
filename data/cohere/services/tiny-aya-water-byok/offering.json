@@ -1,13 +1,11 @@
 {
   "capabilities": [
-    "llm"
+    "llm",
+    "text-generation"
   ],
   "currency": "USD",
   "description": "Tiny Aya Water language model",
-  "details": {
-    "object": "model",
-    "owned_by": "cohere"
-  },
+  "details": {},
   "display_name": "Tiny Aya Water",
   "name": "tiny-aya-water",
   "schema": "offering_v1",

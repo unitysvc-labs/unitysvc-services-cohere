@@ -1,6 +1,9 @@
 {
   "capabilities": [
-    "vision_language_model"
+    "llm",
+    "text-generation",
+    "vision",
+    "image-text-to-text"
   ],
   "currency": "USD",
   "description": "Command A Vision 07 2025 language model",
@@ -10,9 +13,7 @@
     "max_input_tokens": 4096,
     "max_output_tokens": 4096,
     "max_tokens": 4096,
-    "mode": "completion",
-    "object": "model",
-    "owned_by": "cohere"
+    "mode": "completion"
   },
   "display_name": "Command A Vision 07 2025",
   "name": "command-a-vision-07-2025",

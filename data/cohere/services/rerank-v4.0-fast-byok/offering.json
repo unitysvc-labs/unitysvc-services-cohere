@@ -10,9 +10,7 @@
     "max_input_tokens": 32768,
     "max_output_tokens": 32768,
     "max_tokens": 32768,
-    "mode": "rerank",
-    "object": "model",
-    "owned_by": "cohere"
+    "mode": "rerank"
   },
   "display_name": "Rerank V4.0 Fast",
   "name": "rerank-v4.0-fast",

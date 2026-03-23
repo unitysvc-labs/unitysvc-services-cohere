@@ -9,9 +9,7 @@
     "litellm_provider": "cohere",
     "max_input_tokens": 1024,
     "max_tokens": 1024,
-    "mode": "embedding",
-    "object": "model",
-    "owned_by": "cohere"
+    "mode": "embedding"
   },
   "display_name": "Embed English V3.0 Image",
   "name": "embed-english-v3.0-image",
