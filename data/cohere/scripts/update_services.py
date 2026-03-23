@@ -123,6 +123,8 @@ class ModelSource:
                     )
                     pricing["description"] = price_desc
 
+        capabilities = self._derive_capabilities(model_id, service_type)
+
         return {
             # Directory name uses -byok suffix (used by populate_from_iterator)
             "name": f"{model_id}-byok",
@@ -132,6 +134,7 @@ class ModelSource:
             "display_name": display_name,
             "description": f"{display_name} language model",
             "service_type": service_type,
+            "capabilities": capabilities,
             "status": "ready",
             "details": details,
             "payout_price": pricing,
@@ -149,10 +152,31 @@ class ModelSource:
         if any(kw in model_lower for kw in ["embed", "embedding"]):
             return "embedding"
         if any(kw in model_lower for kw in ["rerank"]):
-            return "rerank"
-        if any(kw in model_lower for kw in ["vision"]):
-            return "vision_language_model"
+            return "embedding"  # rerank is a retrieval service, same access pattern
         return "llm"
+
+    def _derive_capabilities(self, model_id: str, service_type: str) -> list[str]:
+        """Derive capabilities from model name and service type."""
+        caps: list[str] = []
+        model_lower = model_id.lower()
+
+        if service_type == "llm":
+            caps.append("llm")
+            caps.append("text-generation")
+        elif service_type == "embedding":
+            if "rerank" in model_lower:
+                caps.append("rerank")
+            else:
+                caps.append("embedding")
+
+        if "vision" in model_lower or "aya-vision" in model_lower:
+            caps.append("vision")
+            caps.append("image-text-to-text")
+
+        if "command" in model_lower and "vision" not in model_lower:
+            caps.append("tools")
+
+        return caps
 
     def _format_price(self, price: float) -> str:
         """Format price without trailing .0 for whole numbers."""
