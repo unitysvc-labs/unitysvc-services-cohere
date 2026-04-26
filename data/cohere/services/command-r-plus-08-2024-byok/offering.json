@@ -7,12 +7,13 @@
   "currency": "USD",
   "description": "Command R Plus 08 2024 language model",
   "details": {
-    "contextLength": 128000,
+    "context_length": 128000,
     "litellm_provider": "cohere_chat",
     "max_input_tokens": 128000,
     "max_output_tokens": 4096,
     "max_tokens": 4096,
-    "mode": "chat"
+    "mode": "chat",
+    "parameter_count": null
   },
   "display_name": "Command R Plus 08 2024",
   "name": "command-r-plus-08-2024",

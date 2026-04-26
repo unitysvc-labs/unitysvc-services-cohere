@@ -5,7 +5,10 @@
   ],
   "currency": "USD",
   "description": "C4Ai Aya Expanse 32B language model",
-  "details": {},
+  "details": {
+    "context_length": null,
+    "parameter_count": null
+  },
   "display_name": "C4Ai Aya Expanse 32B",
   "name": "c4ai-aya-expanse-32b",
   "schema": "offering_v1",
