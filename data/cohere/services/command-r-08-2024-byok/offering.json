@@ -7,12 +7,12 @@
   "currency": "USD",
   "description": "Command R 08 2024 language model",
   "details": {
+    "context_length": 128000,
     "litellm_provider": "cohere_chat",
     "max_input_tokens": 128000,
     "max_output_tokens": 4096,
     "max_tokens": 4096,
     "mode": "chat",
-    "context_length": 128000,
     "parameter_count": null
   },
   "display_name": "Command R 08 2024",

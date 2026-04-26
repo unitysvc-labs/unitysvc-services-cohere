@@ -7,12 +7,12 @@
   "currency": "USD",
   "description": "Command R7B Arabic 02 2025 language model",
   "details": {
+    "context_length": 4096,
     "litellm_provider": "cohere",
     "max_input_tokens": 4096,
     "max_output_tokens": 4096,
     "max_tokens": 4096,
     "mode": "completion",
-    "context_length": 4096,
     "parameter_count": null
   },
   "display_name": "Command R7B Arabic 02 2025",

@@ -7,12 +7,12 @@
   "currency": "USD",
   "description": "Command A Translate 08 2025 language model",
   "details": {
+    "context_length": 256000,
     "litellm_provider": "oci",
     "max_input_tokens": 256000,
     "max_output_tokens": 4000,
     "max_tokens": 4000,
     "mode": "chat",
-    "context_length": 256000,
     "parameter_count": null
   },
   "display_name": "Command A Translate 08 2025",
