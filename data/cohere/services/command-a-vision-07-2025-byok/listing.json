@@ -50,7 +50,7 @@
     }
   },
   "list_price": {
-    "description": "Service provider charges $1 / $2 per 1M input/output tokens",
+    "description": "Service provider charges $1.56 / $1.56 per 1M input/output tokens",
     "input": "0",
     "output": "0",
     "type": "one_million_tokens"

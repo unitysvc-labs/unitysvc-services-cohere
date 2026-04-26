@@ -50,20 +50,20 @@
     }
   },
   "list_price": {
-    "description": "Service provider charges $0.1 / $0 per 1M input/output tokens",
+    "description": "Service provider charges $2.5 / $10 per 1M input/output tokens",
     "input": "0",
     "output": "0",
     "type": "one_million_tokens"
   },
   "schema": "listing_v1",
   "status": "ready",
-  "time_created": "2026-03-23T23:22:03.901677Z",
+  "time_created": "2026-04-26T03:49:00.998389Z",
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
       "base_url": "${API_GATEWAY_BASE_URL}/p/cohere",
       "routing_key": {
-        "model": "embed-english-v2.0"
+        "model": "command-a-03-2025"
       }
     }
   }

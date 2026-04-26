@@ -3,16 +3,16 @@
     "embedding"
   ],
   "currency": "USD",
-  "description": "Embed English V2.0 language model",
+  "description": "Embed Multilingual V3.0 language model",
   "details": {
-    "contextLength": 4096,
+    "contextLength": 1024,
     "litellm_provider": "cohere",
-    "max_input_tokens": 4096,
-    "max_tokens": 4096,
+    "max_input_tokens": 1024,
+    "max_tokens": 1024,
     "mode": "embedding"
   },
-  "display_name": "Embed English V2.0",
-  "name": "embed-english-v2.0",
+  "display_name": "Embed Multilingual V3.0",
+  "name": "embed-multilingual-v3.0",
   "payout_price": {
     "description": "Service provider charges $0.1 / $0 per 1M input/output tokens",
     "input": "0",
@@ -27,15 +27,15 @@
     "gateway",
     "byok"
   ],
-  "time_created": "2026-03-23T23:22:03.901274Z",
+  "time_created": "2026-04-26T03:49:01.023374Z",
   "upstream_access_config": {
-    "cohere_api": {
+    "Cohere API": {
       "access_method": "http",
       "api_key": "${ customer_secrets.COHERE_API_KEY }",
       "base_url": "https://api.cohere.ai/",
       "rate_limits": [],
       "routing_key": {
-        "model": "embed-english-v2.0"
+        "model": "embed-multilingual-v3.0"
       }
     }
   }

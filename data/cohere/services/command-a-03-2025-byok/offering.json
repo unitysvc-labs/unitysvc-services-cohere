@@ -2,23 +2,22 @@
   "capabilities": [
     "llm",
     "text-generation",
-    "vision",
-    "image-text-to-text"
+    "tools"
   ],
   "currency": "USD",
-  "description": "Command A Vision 07 2025 language model",
+  "description": "Command A 03 2025 language model",
   "details": {
-    "contextLength": 128000,
-    "litellm_provider": "oci",
-    "max_input_tokens": 128000,
-    "max_output_tokens": 4000,
-    "max_tokens": 4000,
+    "contextLength": 256000,
+    "litellm_provider": "cohere_chat",
+    "max_input_tokens": 256000,
+    "max_output_tokens": 8000,
+    "max_tokens": 8000,
     "mode": "chat"
   },
-  "display_name": "Command A Vision 07 2025",
-  "name": "command-a-vision-07-2025",
+  "display_name": "Command A 03 2025",
+  "name": "command-a-03-2025",
   "payout_price": {
-    "description": "Service provider charges $1.56 / $1.56 per 1M input/output tokens",
+    "description": "Service provider charges $2.5 / $10 per 1M input/output tokens",
     "input": "0",
     "output": "0",
     "type": "one_million_tokens"
@@ -31,7 +30,7 @@
     "gateway",
     "byok"
   ],
-  "time_created": "2026-01-26T01:30:44.460Z",
+  "time_created": "2026-04-26T03:49:00.997814Z",
   "upstream_access_config": {
     "Cohere API": {
       "access_method": "http",
@@ -39,7 +38,7 @@
       "base_url": "https://api.cohere.ai/",
       "rate_limits": [],
       "routing_key": {
-        "model": "command-a-vision-07-2025"
+        "model": "command-a-03-2025"
       }
     }
   }

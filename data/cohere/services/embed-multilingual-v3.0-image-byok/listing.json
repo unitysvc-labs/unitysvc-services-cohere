@@ -57,13 +57,13 @@
   },
   "schema": "listing_v1",
   "status": "ready",
-  "time_created": "2026-03-23T23:22:03.873253Z",
+  "time_created": "2026-04-26T03:49:01.028387Z",
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
       "base_url": "${API_GATEWAY_BASE_URL}/p/cohere",
       "routing_key": {
-        "model": "embed-english-light-v2.0"
+        "model": "embed-multilingual-v3.0-image"
       }
     }
   }

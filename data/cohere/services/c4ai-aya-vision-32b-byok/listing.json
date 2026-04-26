@@ -49,21 +49,15 @@
       "mime_type": "bash"
     }
   },
-  "list_price": {
-    "description": "Service provider charges $0 / $0 per 1M input/output tokens",
-    "input": "0",
-    "output": "0",
-    "type": "one_million_tokens"
-  },
   "schema": "listing_v1",
   "status": "ready",
-  "time_created": "2026-01-26T01:30:44.464Z",
+  "time_created": "2026-04-26T03:49:00.994076Z",
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
       "base_url": "${API_GATEWAY_BASE_URL}/p/cohere",
       "routing_key": {
-        "model": "rerank-v4.0-fast"
+        "model": "c4ai-aya-vision-32b"
       }
     }
   }
