@@ -20,7 +20,13 @@ from unitysvc_sellers.template_populate import populate_from_iterator
 # Provider Configuration
 PROVIDER_NAME = "cohere"
 PROVIDER_DISPLAY_NAME = "Cohere"
-API_BASE_URL = "https://api.cohere.ai/"
+# Bare Cohere host.  The upstream ``base_url`` is the unversioned host;
+# per-listing ``version_prefix`` parameters on the OpenAI-shape presets
+# select either ``/v1`` (default — Cohere's native v1) or
+# ``/compatibility/v1`` (Cohere's OpenAI-compatibility layer; see
+# https://docs.cohere.com/v2/docs/compatibility-api).  The Cohere SDK
+# preset uses bare ``/v2`` paths via the SDK's own URL handling.
+API_BASE_URL = "https://api.cohere.ai"
 ENV_API_KEY_NAME = "COHERE_API_KEY"
 
 SCRIPT_DIR = Path(__file__).parent
@@ -106,16 +112,14 @@ class ModelSource:
         pricing = None
         if model_data:
             if "input_cost_per_token" in model_data and "output_cost_per_token" in model_data:
-                input_price = round(float(
-                    model_data["input_cost_per_token"]) * 1_000_000, 4)
-                output_price = round(float(
-                    model_data["output_cost_per_token"]) * 1_000_000, 4)
-                price_desc = (
-                    f"Service provider charges "
-                    f"${self._format_price(input_price)} / "
-                    f"${self._format_price(output_price)} "
-                    f"per 1M input/output tokens"
-                )
+                input_price = round(
+                    float(model_data["input_cost_per_token"]) * 1_000_000, 4)
+                output_price = round(
+                    float(model_data["output_cost_per_token"]) * 1_000_000, 4)
+                price_desc = (f"Service provider charges "
+                              f"${self._format_price(input_price)} / "
+                              f"${self._format_price(output_price)} "
+                              f"per 1M input/output tokens")
                 pricing = {
                     "type": "one_million_tokens",
                     "input": "0",
@@ -124,16 +128,15 @@ class ModelSource:
                 }
                 # Include cached_input if available
                 if "cache_read_input_token_cost" in model_data:
-                    cached_price = round(float(
-                        model_data["cache_read_input_token_cost"]) * 1_000_000, 4)
+                    cached_price = round(
+                        float(model_data["cache_read_input_token_cost"]) *
+                        1_000_000, 4)
                     pricing["cached_input"] = "0"
-                    price_desc = (
-                        f"Service provider charges "
-                        f"${self._format_price(input_price)} / "
-                        f"${self._format_price(output_price)} / "
-                        f"${self._format_price(cached_price)} "
-                        f"per 1M input/output/cached tokens"
-                    )
+                    price_desc = (f"Service provider charges "
+                                  f"${self._format_price(input_price)} / "
+                                  f"${self._format_price(output_price)} / "
+                                  f"${self._format_price(cached_price)} "
+                                  f"per 1M input/output/cached tokens")
                     pricing["description"] = price_desc
 
         capabilities = self._derive_capabilities(model_id, service_type)
@@ -168,7 +171,8 @@ class ModelSource:
             return "embedding"  # rerank is a retrieval service, same access pattern
         return "llm"
 
-    def _derive_capabilities(self, model_id: str, service_type: str) -> list[str]:
+    def _derive_capabilities(self, model_id: str,
+                             service_type: str) -> list[str]:
         """Derive capabilities from model name and service type."""
         caps: list[str] = []
         model_lower = model_id.lower()
