@@ -6,3 +6,8 @@
 *.png
 *.wav
 *.mp3
+
+# Per-service test artifacts from `usvc_seller data run-tests`
+data/*/services/*/listing_*.out
+data/*/services/*/listing_*.err
+data/*/services/*/listing_*.status

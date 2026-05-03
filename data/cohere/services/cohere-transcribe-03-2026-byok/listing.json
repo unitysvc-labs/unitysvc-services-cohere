@@ -2,42 +2,31 @@
   "currency": "USD",
   "documents": {
     "Connectivity test": {
-      "category": "connectivity_test",
-      "description": "Verify the transcription endpoint by sending a tiny known audio file",
-      "file_path": "../../docs/connectivity-transcription.sh.j2",
-      "is_active": true,
-      "is_public": false,
-      "meta": {
-        "output_contains": "connectivity ok"
-      },
-      "mime_type": "bash"
+      "$doc_preset": {
+        "name": "llm_connectivity_transcription",
+        "version_prefix": "/compatibility/v1"
+      }
     },
     "How to use this model": {
       "$doc_preset": "llm_description"
     },
     "JavaScript code example": {
-      "category": "code_example",
-      "description": "Transcribe a pre-recorded audio file via Cohere's OpenAI-compatibility layer",
-      "file_path": "../../docs/code-example-transcription.js.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "javascript"
+      "$doc_preset": {
+        "name": "llm_code_example_transcription_javascript",
+        "version_prefix": "/compatibility/v1"
+      }
     },
     "Python code example": {
-      "category": "code_example",
-      "description": "Transcribe a pre-recorded audio file via Cohere's OpenAI-compatibility layer",
-      "file_path": "../../docs/code-example-transcription.py.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "python"
+      "$doc_preset": {
+        "name": "llm_code_example_transcription_requests",
+        "version_prefix": "/compatibility/v1"
+      }
     },
     "cURL code example": {
-      "category": "code_example",
-      "description": "Transcribe a pre-recorded audio file via Cohere's OpenAI-compatibility layer",
-      "file_path": "../../docs/code-example-transcription.sh.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "bash"
+      "$doc_preset": {
+        "name": "llm_code_example_transcription_shell",
+        "version_prefix": "/compatibility/v1"
+      }
     }
   },
   "schema": "listing_v1",
