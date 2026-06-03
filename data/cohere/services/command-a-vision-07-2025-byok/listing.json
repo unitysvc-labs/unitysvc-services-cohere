@@ -41,13 +41,14 @@
     "output": "0",
     "type": "one_million_tokens"
   },
+  "name": "cohere/command-a-vision-07-2025",
   "schema": "listing_v1",
   "status": "ready",
   "time_created": "2026-01-26T01:30:44.460Z",
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
-      "base_url": "${API_GATEWAY_BASE_URL}/cohere",
+      "base_url": "${API_GATEWAY_BASE_URL}/{{ service_name }}",
       "routing_key": {
         "model": "command-a-vision-07-2025"
       }

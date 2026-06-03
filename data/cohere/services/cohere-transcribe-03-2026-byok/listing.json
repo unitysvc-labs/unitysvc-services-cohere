@@ -29,13 +29,14 @@
       }
     }
   },
+  "name": "cohere/cohere-transcribe-03-2026",
   "schema": "listing_v1",
   "status": "ready",
   "time_created": "2026-04-26T03:49:00.996798Z",
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
-      "base_url": "${API_GATEWAY_BASE_URL}/cohere",
+      "base_url": "${API_GATEWAY_BASE_URL}/{{ service_name }}",
       "routing_key": {
         "model": "cohere-transcribe-03-2026"
       }
