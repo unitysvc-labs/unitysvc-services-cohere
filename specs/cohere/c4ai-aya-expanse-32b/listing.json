@@ -1,0 +1,50 @@
+{
+  "currency": "USD",
+  "documents": {
+    "Connectivity test": {
+      "$doc_preset": {
+        "name": "llm_connectivity",
+        "version_prefix": "/compatibility/v1"
+      }
+    },
+    "Default request body": {
+      "$doc_preset": "llm_request_template"
+    },
+    "How to use this model": {
+      "$doc_preset": "llm_description"
+    },
+    "JavaScript code example": {
+      "$doc_preset": {
+        "name": "llm_code_example_javascript",
+        "version_prefix": "/compatibility/v1"
+      }
+    },
+    "Python code example (Cohere SDK)": {
+      "$doc_preset": "llm_code_example_cohere"
+    },
+    "Python code example (OpenAI SDK)": {
+      "$doc_preset": {
+        "name": "llm_code_example_openai",
+        "version_prefix": "/compatibility/v1"
+      }
+    },
+    "cURL code example": {
+      "$doc_preset": {
+        "name": "llm_code_example_shell",
+        "version_prefix": "/compatibility/v1"
+      }
+    }
+  },
+  "name": "cohere/c4ai-aya-expanse-32b",
+  "status": "ready",
+  "time_created": "2026-01-26T01:30:44.492Z",
+  "user_access_interfaces": {
+    "provider_api": {
+      "access_method": "http",
+      "base_url": "${API_GATEWAY_BASE_URL}/cohere",
+      "routing_key": {
+        "model": "c4ai-aya-expanse-32b"
+      }
+    }
+  }
+}
