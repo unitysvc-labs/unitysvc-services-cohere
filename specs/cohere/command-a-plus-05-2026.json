@@ -1,0 +1,43 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.cohere.ai",
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools"
+    ],
+    "description": "Command A Plus 05 2026 language model",
+    "details": {
+      "context_length": 4096,
+      "litellm_provider": "cohere",
+      "max_input_tokens": 4096,
+      "max_output_tokens": 4096,
+      "max_tokens": 4096,
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "mode": "completion",
+      "parameter_count": null
+    },
+    "display_name": "Command A Plus 05 2026",
+    "env_api_key_name": "COHERE_API_KEY",
+    "is_image_embedding": false,
+    "is_transcription": false,
+    "list_price": {
+      "description": "Service provider charges $1 / $2 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "offering_name": "command-a-plus-05-2026",
+    "payout_price": {
+      "description": "Service provider charges $1 / $2 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "provider_display_name": "Cohere",
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.cohere.ai",
+    "capabilities": [
+      "embedding"
+    ],
+    "description": "Embed English V3.0 embedding model",
+    "details": {
+      "context_length": 1024,
+      "litellm_provider": "cohere",
+      "max_input_tokens": 1024,
+      "max_tokens": 1024,
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "mode": "embedding",
+      "parameter_count": null
+    },
+    "display_name": "Embed English V3.0",
+    "env_api_key_name": "COHERE_API_KEY",
+    "is_image_embedding": false,
+    "is_transcription": false,
+    "list_price": {
+      "description": "Service provider charges $0.1 / $0 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "offering_name": "embed-english-v3.0",
+    "payout_price": {
+      "description": "Service provider charges $0.1 / $0 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "provider_display_name": "Cohere",
+    "service_type": "embedding",
+    "status": "ready"
+  }
+}
