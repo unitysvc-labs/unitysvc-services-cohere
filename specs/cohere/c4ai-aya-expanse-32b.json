@@ -1,0 +1,24 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.cohere.ai",
+    "capabilities": [
+      "llm",
+      "text-generation"
+    ],
+    "description": "C4Ai Aya Expanse 32B language model",
+    "details": {
+      "context_length": null,
+      "parameter_count": null
+    },
+    "display_name": "C4Ai Aya Expanse 32B",
+    "env_api_key_name": "COHERE_API_KEY",
+    "is_image_embedding": false,
+    "is_transcription": false,
+    "list_price": null,
+    "offering_name": "c4ai-aya-expanse-32b",
+    "payout_price": null,
+    "provider_display_name": "Cohere",
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

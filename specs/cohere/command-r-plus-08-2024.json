@@ -1,0 +1,43 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.cohere.ai",
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools"
+    ],
+    "description": "Command R Plus 08 2024 language model",
+    "details": {
+      "context_length": 128000,
+      "litellm_provider": "cohere_chat",
+      "max_input_tokens": 128000,
+      "max_output_tokens": 4096,
+      "max_tokens": 4096,
+      "metadata_sources": {
+        "context_length": "openrouter"
+      },
+      "mode": "chat",
+      "parameter_count": null
+    },
+    "display_name": "Command R Plus 08 2024",
+    "env_api_key_name": "COHERE_API_KEY",
+    "is_image_embedding": false,
+    "is_transcription": false,
+    "list_price": {
+      "description": "Service provider charges $2.5 / $10 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "offering_name": "command-r-plus-08-2024",
+    "payout_price": {
+      "description": "Service provider charges $2.5 / $10 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "provider_display_name": "Cohere",
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
