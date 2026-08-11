@@ -3,6 +3,9 @@
   "documents": {
     "Connectivity test": {
       "$doc_preset": {
+        "meta": {
+          "sleep_after_test": 5
+        },
         "name": "llm_connectivity_embed",
         "version_prefix": "/compatibility/v1"
       }
@@ -12,18 +15,27 @@
     },
     "JavaScript code example": {
       "$doc_preset": {
+        "meta": {
+          "sleep_after_test": 5
+        },
         "name": "llm_code_example_embed_javascript",
         "version_prefix": "/compatibility/v1"
       }
     },
     "Python code example": {
       "$doc_preset": {
+        "meta": {
+          "sleep_after_test": 5
+        },
         "name": "llm_code_example_embed_requests",
         "version_prefix": "/compatibility/v1"
       }
     },
     "cURL code example": {
       "$doc_preset": {
+        "meta": {
+          "sleep_after_test": 5
+        },
         "name": "llm_code_example_embed_shell",
         "version_prefix": "/compatibility/v1"
       }
