@@ -8,6 +8,10 @@
 *.mp3
 
 # Per-service test artifacts from `usvc_seller data run-tests`
-data/*/services/*/listing_*.out
-data/*/services/*/listing_*.err
-data/*/services/*/listing_*.status
+# Test outputs. Path-anchored patterns were left behind by the move to the
+# services/specs/ layout, so artifacts were no longer ignored; match by
+# extension instead so the layout cannot strand them again.
+*.out
+*.err
+*.status
+failed*
