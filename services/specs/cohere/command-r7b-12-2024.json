@@ -24,14 +24,14 @@
     "is_image_embedding": false,
     "is_transcription": false,
     "list_price": {
-      "description": "Service provider charges $0.15 / $0.0375 per 1M input/output tokens",
+      "description": "Service provider charges $0.0375 / $0.15 per 1M input/output tokens",
       "input": "0",
       "output": "0",
       "type": "one_million_tokens"
     },
     "offering_name": "command-r7b-12-2024",
     "payout_price": {
-      "description": "Service provider charges $0.15 / $0.0375 per 1M input/output tokens",
+      "description": "Service provider charges $0.0375 / $0.15 per 1M input/output tokens",
       "input": "0",
       "output": "0",
       "type": "one_million_tokens"

@@ -1,23 +1,48 @@
 {
+{#- Only chat/LLM completions go through the anthropic->openai translator and
+    advertise the dual OpenAI/Anthropic dialect. Embedding, transcription and
+    image-embedding hit non-chat surfaces where that translation is meaningless,
+    so they keep their plain details and an untranslated byok channel. -#}
+{%- set is_chat = service_type not in ["embedding"] and not is_transcription and not is_image_embedding %}
   "name": "{{ offering_name }}",
   "display_name": "{{ display_name }}",
-  "description": {{ description | tojson }},
+{#- The validator requires >=2 paragraphs (blank-line separated): a short teaser
+    plus detail. The populate script only emits a one-line brief, so compose the
+    rest here. Chat models get a third paragraph about the dual-dialect gateway. -#}
+{%- set _brief = description | default(display_name ~ ' — a ' ~ service_type ~ ' model served by ' ~ provider_display_name, true) %}
+{%- set _detail = display_name ~ ' is served by ' ~ provider_display_name ~ ' over an OpenAI-compatible API. Requests are proxied through the UnitySVC gateway; you bring your own ' ~ provider_display_name ~ ' API key (the byok channel), so token usage is billed by ' ~ provider_display_name ~ ' directly and the service is free through UnitySVC.' %}
+{%- if is_chat %}
+{%- set _howto = 'The endpoint accepts both OpenAI Chat Completions and Anthropic Messages requests — the gateway auto-detects the dialect, translates to the upstream, and returns the response in the format you sent. See the code examples for both styles.' %}
+{%- set _description = _brief ~ '\n\n' ~ _detail ~ '\n\n' ~ _howto %}
+{%- else %}
+{%- set _description = _brief ~ '\n\n' ~ _detail %}
+{%- endif %}
+  "description": {{ _description | tojson }},
   "service_type": "{{ service_type }}",
   "capabilities": {{ capabilities | default([service_type]) | tojson }},
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
   "tags": ["ai", "gateway", "byok"],
+{%- if is_chat %}
+  "details": {{ dict(details or {}, input_formats=["openai", "anthropic"], output_formats=["openai_response", "anthropic_response"]) | tojson }},
+{%- else %}
   "details": {{ details | tojson }},
+{%- endif %}
 {%- if payout_price %}
   "payout_price": {{ payout_price | tojson }},
 {%- endif %}
   "upstream_access_config": {
-    "{{ provider_display_name }} API": {
+    "byok": {
       "access_method": "http",
       "base_url": "{{ api_base_url }}",
       "api_key": "${ customer_secrets.{{ env_api_key_name }} }",
       "rate_limits": [],
       "routing_key": {"model": "{{ offering_name }}"}
+{%- if is_chat %},
+      "request_transformer": {
+        "llm_translator": "anthropic_to_openai"
+      }
+{%- endif %}
     }
   }
 }
