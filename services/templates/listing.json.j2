@@ -147,22 +147,18 @@
         OpenAI form, while the gateway path speaks Anthropic and exercises the
         llm_translator. -#}
     "Python code example (Anthropic SDK)": {
-      "category": "code_example",
-      "description": "Anthropic Messages API via the anthropic SDK; the gateway translates to the upstream",
-      "file_path": "anthropic-to-openai-code-example.py.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "python",
-      "meta": {"requirements": ["openai", "anthropic"], "sleep_after_test": 5}
+      "$doc_preset": {
+        "name": "llm_code_example_anthropic_to_openai_sdk",
+        "version_prefix": "/compatibility/v1",
+        "meta": {"sleep_after_test": 5}
+      }
     },
     "cURL code example (Anthropic style)": {
-      "category": "code_example",
-      "description": "Anthropic Messages API via cURL; the gateway translates to the upstream",
-      "file_path": "anthropic-to-openai-code-example.sh.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "bash",
-      "meta": {"sleep_after_test": 5}
+      "$doc_preset": {
+        "name": "llm_code_example_anthropic_to_openai_shell",
+        "version_prefix": "/compatibility/v1",
+        "meta": {"sleep_after_test": 5}
+      }
     },
     "Connectivity test": {
       "$doc_preset": {
