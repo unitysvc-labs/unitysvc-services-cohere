@@ -12,7 +12,7 @@
   "payout_price": {{ payout_price | tojson }},
 {%- endif %}
   "upstream_access_config": {
-    "{{ provider_display_name }} API": {
+    "byok": {
       "access_method": "http",
       "base_url": "{{ api_base_url }}",
       "api_key": "${ customer_secrets.{{ env_api_key_name }} }",

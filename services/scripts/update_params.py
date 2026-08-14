@@ -145,36 +145,35 @@ class ModelSource:
         if canonical["sources"]:
             details["metadata_sources"] = canonical["sources"]
 
-        # Extract upstream pricing for description, but set prices to 0 for BYOK
-        pricing = None
-        if model_data:
-            if "input_cost_per_token" in model_data and "output_cost_per_token" in model_data:
-                input_price = round(
-                    float(model_data["input_cost_per_token"]) * 1_000_000, 4)
-                output_price = round(
-                    float(model_data["output_cost_per_token"]) * 1_000_000, 4)
-                price_desc = (f"Service provider charges "
-                              f"${self._format_price(input_price)} / "
-                              f"${self._format_price(output_price)} "
-                              f"per 1M input/output tokens")
-                pricing = {
-                    "type": "one_million_tokens",
-                    "input": "0",
-                    "output": "0",
-                    "description": price_desc,
-                }
-                # Include cached_input if available
-                if "cache_read_input_token_cost" in model_data:
-                    cached_price = round(
-                        float(model_data["cache_read_input_token_cost"]) *
-                        1_000_000, 4)
-                    pricing["cached_input"] = "0"
-                    price_desc = (f"Service provider charges "
-                                  f"${self._format_price(input_price)} / "
-                                  f"${self._format_price(output_price)} / "
-                                  f"${self._format_price(cached_price)} "
-                                  f"per 1M input/output/cached tokens")
-                    pricing["description"] = price_desc
+        # BYOK: the customer's own key pays the provider directly, so the service
+        # is free through the gateway. Keep the price cell short ("Free (BYOK)");
+        # the reference rates go into the description paragraph built below.
+        pricing = {"type": "constant", "price": "0", "description": "Free (BYOK)"}
+        pricing_note = None
+        if model_data and "input_cost_per_token" in model_data and "output_cost_per_token" in model_data:
+            input_price = round(float(model_data["input_cost_per_token"]) * 1_000_000, 4)
+            output_price = round(float(model_data["output_cost_per_token"]) * 1_000_000, 4)
+            if "cache_read_input_token_cost" in model_data:
+                cached_price = round(float(model_data["cache_read_input_token_cost"]) * 1_000_000, 4)
+                pricing_note = (
+                    f"${self._format_price(input_price)} / "
+                    f"${self._format_price(output_price)} / "
+                    f"${self._format_price(cached_price)} "
+                    f"per 1M input/output/cached tokens"
+                )
+            else:
+                pricing_note = (
+                    f"${self._format_price(input_price)} / "
+                    f"${self._format_price(output_price)} "
+                    f"per 1M input/output tokens"
+                )
+        # The offering template renders {{ description }} verbatim, so the BYOK
+        # pricing paragraph is built here (not in the template).
+        byok_para = (
+            "Pricing — this is a bring-your-own-key (BYOK) service, so it is free "
+            f"through the UnitySVC gateway; usage is billed by {PROVIDER_DISPLAY_NAME} "
+            f"directly{f' at {pricing_note}' if pricing_note else ''}."
+        )
 
         capabilities = self._derive_capabilities(model_id, service_type)
 
@@ -197,7 +196,7 @@ class ModelSource:
             "offering_name": model_id,
             # Offering fields
             "display_name": display_name,
-            "description": f"{display_name} {description_suffix}",
+            "description": f"{display_name} {description_suffix}.\n\n{byok_para}",
             "service_type": service_type,
             "capabilities": capabilities,
             "is_transcription": is_transcription,
