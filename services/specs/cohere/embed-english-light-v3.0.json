@@ -4,7 +4,7 @@
     "capabilities": [
       "embedding"
     ],
-    "description": "Embed English Light V3.0 embedding model",
+    "description": "Embed English Light V3.0 embedding model.\n\nPricing \u2014 this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly at $0.1 / $0 per 1M input/output tokens.",
     "details": {
       "context_length": 1024,
       "litellm_provider": "cohere",
@@ -21,10 +21,9 @@
     "is_image_embedding": false,
     "is_transcription": false,
     "list_price": {
-      "description": "Service provider charges $0.1 / $0 per 1M input/output tokens",
-      "input": "0",
-      "output": "0",
-      "type": "one_million_tokens"
+      "description": "Free (BYOK)",
+      "price": "0",
+      "type": "constant"
     },
     "offering_name": "embed-english-light-v3.0",
     "payout_price": {
