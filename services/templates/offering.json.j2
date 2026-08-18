@@ -1,7 +1,10 @@
 {
   "name": "{{ offering_name }}",
   "display_name": "{{ display_name }}",
-  "description": {{ description | tojson }},
+{%- set _paras = (description | default('', true)).split('\n\n') if description else [] %}
+{%- set _summary = (_paras[0] if _paras else display_name ~ ', served through the UnitySVC gateway.')[:200] %}
+  "summary": {{ _summary | tojson }},
+  "description": {{ (_paras[1:] | join('\n\n') if _paras | length > 1 else description) | tojson }},
   "service_type": "{{ service_type }}",
   "capabilities": {{ capabilities | default([service_type]) | tojson }},
   "status": "{{ status | default('ready') }}",

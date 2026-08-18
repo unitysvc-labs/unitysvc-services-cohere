@@ -3,7 +3,7 @@
     "embedding"
   ],
   "currency": "USD",
-  "description": "Embed V4.0 embedding model.\n\nPricing \u2014 this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly.",
+  "description": "Pricing \u2014 this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly.",
   "details": {
     "context_length": 128000,
     "litellm_provider": "cohere",
@@ -25,6 +25,7 @@
   },
   "service_type": "embedding",
   "status": "ready",
+  "summary": "Embed V4.0 embedding model.",
   "tags": [
     "ai",
     "gateway",
