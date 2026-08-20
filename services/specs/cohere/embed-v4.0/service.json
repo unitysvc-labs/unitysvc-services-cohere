@@ -1,5 +1,5 @@
 {
-  "description": "Pricing \u2014 this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly.",
+  "description": "Pricing — this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly.",
   "display_name": "Embed V4.0",
   "list_price": {
     "description": "Free (BYOK)",

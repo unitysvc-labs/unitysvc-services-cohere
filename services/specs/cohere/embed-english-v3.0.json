@@ -4,7 +4,7 @@
     "capabilities": [
       "embedding"
     ],
-    "description": "Embed English V3.0 embedding model.\n\nPricing \u2014 this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly at $0.1 / $0 per 1M input/output tokens.",
+    "description": "Embed English V3.0 embedding model.\n\nPricing — this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly at $0.1 / $0 per 1M input/output tokens.",
     "details": {
       "context_length": 1024,
       "litellm_provider": "cohere",
