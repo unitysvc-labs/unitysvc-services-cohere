@@ -6,7 +6,7 @@
       "text-generation",
       "tools"
     ],
-    "description": "Command R7B Arabic 02 2025 language model.\n\nPricing \u2014 this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly at $1 / $2 per 1M input/output tokens.",
+    "description": "Command R7B Arabic 02 2025 language model.\n\nPricing — this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly at $1 / $2 per 1M input/output tokens.",
     "details": {
       "context_length": 4096,
       "litellm_provider": "cohere",
