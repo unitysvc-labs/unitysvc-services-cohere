@@ -20,7 +20,11 @@
       "type": "constant"
     },
     "offering_name": "c4ai-aya-expanse-32b",
-    "payout_price": null,
+    "payout_price": {
+      "description": "Free (BYOK)",
+      "price": "0",
+      "type": "constant"
+    },
     "provider_display_name": "Cohere",
     "service_type": "llm",
     "status": "ready"

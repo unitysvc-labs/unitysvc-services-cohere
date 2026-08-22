@@ -30,10 +30,9 @@
     },
     "offering_name": "command-a-03-2025",
     "payout_price": {
-      "description": "Service provider charges $2.5 / $10 per 1M input/output tokens",
-      "input": "0",
-      "output": "0",
-      "type": "one_million_tokens"
+      "description": "Free (BYOK)",
+      "price": "0",
+      "type": "constant"
     },
     "provider_display_name": "Cohere",
     "service_type": "llm",
