@@ -2,8 +2,7 @@
   "parameters": {
     "api_base_url": "https://api.cohere.ai",
     "capabilities": [
-      "llm",
-      "text-generation"
+      "chat"
     ],
     "description": "C4Ai Aya Expanse 32B language model.\n\nPricing — usage is billed by Cohere directly.",
     "details": {

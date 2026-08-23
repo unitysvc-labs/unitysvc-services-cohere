@@ -2,7 +2,7 @@
   "parameters": {
     "api_base_url": "https://api.cohere.ai",
     "capabilities": [
-      "embedding"
+      "embed"
     ],
     "description": "Embed Multilingual V3.0 embedding model.\n\nPricing — usage is billed by Cohere directly at $0.1 / $0 per 1M input/output tokens.",
     "details": {

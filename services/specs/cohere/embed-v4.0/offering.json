@@ -1,6 +1,6 @@
 {
   "capabilities": [
-    "embedding"
+    "embed"
   ],
   "currency": "USD",
   "description": "Pricing — usage is billed by Cohere directly at $0.12 / $0 per 1M input/output tokens.",

@@ -2,9 +2,7 @@
   "parameters": {
     "api_base_url": "https://api.cohere.ai",
     "capabilities": [
-      "llm",
-      "text-generation",
-      "tools"
+      "chat"
     ],
     "description": "Command R7B 12 2024 language model.\n\nPricing — usage is billed by Cohere directly at $0.15 / $0.0375 per 1M input/output tokens.",
     "details": {

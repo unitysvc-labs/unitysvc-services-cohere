@@ -2,10 +2,7 @@
   "parameters": {
     "api_base_url": "https://api.cohere.ai",
     "capabilities": [
-      "llm",
-      "text-generation",
-      "vision",
-      "image-text-to-text"
+      "chat"
     ],
     "description": "C4Ai Aya Vision 32B language model.\n\nPricing — usage is billed by Cohere directly.",
     "details": {

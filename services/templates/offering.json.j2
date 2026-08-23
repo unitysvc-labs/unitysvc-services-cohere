@@ -14,7 +14,11 @@
   "summary": {{ _summary | tojson }},
   "description": {{ (_paras[1:] | join('\n\n') if _paras | length > 1 else description) | tojson }},
   "service_type": "{{ service_type }}",
-  "capabilities": {{ capabilities | default([service_type]) | tojson }},
+{#- Platform capability vocabulary (unitysvc docs/capabilities.yml) — what the
+    caller GETS. The populator writes this into every param file; the map here
+    is the fallback for a param file that predates it. -#}
+{%- set _cap = "speech-transcribe" if is_transcription else ({"embedding": "embed"}.get(service_type, "chat")) %}
+  "capabilities": {{ capabilities | default([_cap]) | tojson }},
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
   "tags": ["ai", "gateway", "byok"],

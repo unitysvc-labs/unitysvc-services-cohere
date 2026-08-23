@@ -2,9 +2,7 @@
   "parameters": {
     "api_base_url": "https://api.cohere.ai",
     "capabilities": [
-      "llm",
-      "text-generation",
-      "tools"
+      "chat"
     ],
     "description": "Command A Translate 08 2025 language model.\n\nPricing — usage is billed by Cohere directly at $0.09 / $0.09 per 1M input/output tokens.",
     "details": {
