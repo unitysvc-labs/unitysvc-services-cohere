@@ -189,7 +189,7 @@ class ModelSource:
             f"directly{f' at {pricing_note}' if pricing_note else ''}."
         )
 
-        capabilities = self._derive_capabilities(model_id, service_type)
+        capabilities = self._derive_capabilities(model_id, service_type, is_transcription)
 
         # Description suffix tracks the actual model nature so a
         # transcription model isn't described as "language model".
@@ -239,29 +239,37 @@ class ModelSource:
             return "embedding"  # rerank is a retrieval service, same access pattern
         return "llm"
 
-    def _derive_capabilities(self, model_id: str,
-                             service_type: str) -> list[str]:
-        """Derive capabilities from model name and service type."""
-        caps: list[str] = []
-        model_lower = model_id.lower()
+    def _derive_capabilities(self, model_id: str, service_type: str,
+                             is_transcription: bool) -> list[str]:
+        """The platform capability this offering provides.
 
-        if service_type == "llm":
-            caps.append("llm")
-            caps.append("text-generation")
-        elif service_type == "embedding":
-            if "rerank" in model_lower:
-                caps.append("rerank")
-            else:
-                caps.append("embedding")
+        One entry, from the platform vocabulary (unitysvc
+        ``docs/capabilities.yml``): a capability names what the caller GETS
+        from a call, so a model provides exactly one.
 
-        if "vision" in model_lower or "aya-vision" in model_lower:
-            caps.append("vision")
-            caps.append("image-text-to-text")
+        Deliberately NOT included, and why:
 
-        if "command" in model_lower and "vision" not in model_lower:
-            caps.append("tools")
+        ``vision`` / ``tools``   Attributes.  They change what may appear in
+                                 a chat request; they do not change what
+                                 comes back.  A vision model and a plain
+                                 chat model both answer with generated text.
+        ``text-generation``      A HuggingFace pipeline tag, not a UnitySVC
+                                 capability, and redundant with ``chat``.
+        ``llm``                  An echo of ``service_type``.
 
-        return caps
+        ``embed`` covers both text and image embedding — modality is
+        ``input_formats``, and the outcome (a vector) is identical.  The
+        ``/v2/embed`` vs ``/compatibility/v1/embeddings`` split is carried
+        by ``is_image_embedding`` for example dispatch.
+        """
+        if is_transcription:
+            return ["speech-transcribe"]
+        if service_type == "embedding":
+            # `_determine_service_type` files rerankers under the embedding
+            # service_type (same access pattern); the capability is what
+            # separates them — reordered documents out, not a vector.
+            return ["rerank"] if "rerank" in model_id.lower() else ["embed"]
+        return ["chat"]
 
     def _format_price(self, price: float) -> str:
         """Format price without trailing .0 for whole numbers."""
