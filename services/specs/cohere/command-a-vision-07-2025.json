@@ -7,7 +7,7 @@
       "vision",
       "image-text-to-text"
     ],
-    "description": "Command A Vision 07 2025 language model.\n\nPricing — this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly at $1.56 / $1.56 per 1M input/output tokens.",
+    "description": "Command A Vision 07 2025 language model.\n\nPricing — usage is billed by Cohere directly at $1.56 / $1.56 per 1M input/output tokens.",
     "details": {
       "context_length": 128000,
       "litellm_provider": "oci",
@@ -36,6 +36,7 @@
       "output": "0",
       "type": "one_million_tokens"
     },
+    "pricing_note": "$1.56 / $1.56 per 1M input/output tokens",
     "provider_display_name": "Cohere",
     "service_type": "llm",
     "status": "ready"
