@@ -5,7 +5,7 @@
       "llm",
       "text-generation"
     ],
-    "description": "Cohere Transcribe 03 2026 audio transcription model.\n\nPricing — this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly.",
+    "description": "Cohere Transcribe 03 2026 audio transcription model.\n\nPricing — usage is billed by Cohere directly.",
     "details": {
       "context_length": null,
       "parameter_count": null
@@ -21,6 +21,7 @@
     },
     "offering_name": "cohere-transcribe-03-2026",
     "payout_price": null,
+    "pricing_note": null,
     "provider_display_name": "Cohere",
     "service_type": "llm",
     "status": "ready"

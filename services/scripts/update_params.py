@@ -146,8 +146,13 @@ class ModelSource:
             details["metadata_sources"] = canonical["sources"]
 
         # BYOK: the customer's own key pays the provider directly, so the service
-        # is free through the gateway. Keep the price cell short ("Free (BYOK)");
-        # the reference rates go into the description paragraph built below.
+        # is free through the gateway.
+        #
+        # This plain description is what payout_price keeps (seller-facing). The
+        # customer-facing listing cell is composed in listing.json.j2 from
+        # pricing_note, into the "<amount> ~<intent> <PILL> | <note>" grammar
+        # (unitysvc/unitysvc#1886); do not build it here, since this dict feeds
+        # payout_price too.
         pricing = {"type": "constant", "price": "0", "description": "Free (BYOK)"}
         pricing_note = None
         if model_data and "input_cost_per_token" in model_data and "output_cost_per_token" in model_data:
@@ -167,11 +172,20 @@ class ModelSource:
                     f"${self._format_price(output_price)} "
                     f"per 1M input/output tokens"
                 )
-        # The offering template renders {{ description }} verbatim, so the BYOK
-        # pricing paragraph is built here (not in the template).
+        # Closing pricing paragraph. The offering template renders
+        # {{ description }} verbatim, so it is built here (not in the template).
+        #
+        # The price cell now carries "why free" itself — a BYOK pill beside the
+        # amount, see listing.json.j2 — so this paragraph no longer repeats it
+        # and states only the rate. It is NOT redundant with the cell's hover
+        # note: a `title` attribute is unreachable on touch, absent from the API
+        # and MCP catalog surfaces (`market_list_services` returns the
+        # description, not a rendered tooltip), and not searchable, and for a
+        # BYOK listing the upstream rate is the difference between free and real
+        # money. Models the rate lookup does not cover keep the shorter
+        # rate-less sentence rather than inventing a number.
         byok_para = (
-            "Pricing — this is a bring-your-own-key (BYOK) service, so it is free "
-            f"through the UnitySVC gateway; usage is billed by {PROVIDER_DISPLAY_NAME} "
+            f"Pricing — usage is billed by {PROVIDER_DISPLAY_NAME} "
             f"directly{f' at {pricing_note}' if pricing_note else ''}."
         )
 
@@ -204,6 +218,10 @@ class ModelSource:
             "status": "ready",
             "details": details,
             "payout_price": pricing,
+            # Bare upstream rate card (no "Service provider charges" prefix —
+            # the copy that consumes it already names the biller), placed by
+            # listing.json.j2 behind the `|` of the price cell.
+            "pricing_note": pricing_note,
             # Listing fields
             "list_price": pricing,
             # Provider config (for templates)

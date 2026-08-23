@@ -30,7 +30,7 @@
     }
   },
   "list_price": {
-    "description": "Free (BYOK)",
+    "description": "Free ~ BYOK | usage is billed by Cohere directly at $0.12 / $0 per 1M input/output tokens",
     "price": "0",
     "type": "constant"
   },

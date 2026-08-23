@@ -6,7 +6,7 @@
       "text-generation",
       "tools"
     ],
-    "description": "Command A 03 2025 language model.\n\nPricing — this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly at $2.5 / $10 per 1M input/output tokens.",
+    "description": "Command A 03 2025 language model.\n\nPricing — usage is billed by Cohere directly at $2.5 / $10 per 1M input/output tokens.",
     "details": {
       "context_length": 256000,
       "litellm_provider": "cohere_chat",
@@ -35,6 +35,7 @@
       "output": "0",
       "type": "one_million_tokens"
     },
+    "pricing_note": "$2.5 / $10 per 1M input/output tokens",
     "provider_display_name": "Cohere",
     "service_type": "llm",
     "status": "ready"

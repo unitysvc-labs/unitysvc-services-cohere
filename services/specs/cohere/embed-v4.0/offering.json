@@ -3,7 +3,7 @@
     "embedding"
   ],
   "currency": "USD",
-  "description": "Pricing — this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by Cohere directly.",
+  "description": "Pricing — usage is billed by Cohere directly at $0.12 / $0 per 1M input/output tokens.",
   "details": {
     "context_length": 128000,
     "litellm_provider": "cohere",
