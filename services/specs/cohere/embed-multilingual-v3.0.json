@@ -27,10 +27,9 @@
     },
     "offering_name": "embed-multilingual-v3.0",
     "payout_price": {
-      "description": "Service provider charges $0.1 / $0 per 1M input/output tokens",
-      "input": "0",
-      "output": "0",
-      "type": "one_million_tokens"
+      "description": "Free (BYOK)",
+      "price": "0",
+      "type": "constant"
     },
     "pricing_note": "$0.1 / $0 per 1M input/output tokens",
     "provider_display_name": "Cohere",
