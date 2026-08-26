@@ -11,12 +11,13 @@
   "display_name": "{{ display_name }}",
 {#- 3-paragraph marketplace description (the validator requires >=2 paragraphs;
     the populate script emits a one-line brief). Teaser + detail + how-to.
-    Chat models are reached through Cohere's OpenAI-compatible surface and speak
-    both OpenAI and Anthropic dialects (see the llm_translator below); embedding
-    and transcription models are non-chat, so their how-to omits the dialects. #}
+    Chat models are reachable on both of the surfaces Cohere itself serves —
+    the OpenAI compatibility layer and the native Cohere API (no gateway
+    translation, unitysvc#1931); embedding and transcription models are
+    non-chat, so their how-to omits the dialects. #}
 {%- set is_chat = service_type == 'llm' and not is_transcription | default(false) and not is_image_embedding | default(false) %}
 {%- set _base = description | default(display_name ~ ' — a ' ~ service_type ~ ' model served by ' ~ provider_display_name, true) %}
-{%- set _dual = ' — callable in both OpenAI and Anthropic API styles through the UnitySVC gateway.' %}
+{%- set _dual = ' — callable in both OpenAI-compatible and native Cohere API styles through the UnitySVC gateway.' %}
 {%- set _brief = (_base ~ _dual) if ((_base | length) + (_dual | length) < 195) else _base %}
 {%- set _ctx = ' with a ' ~ details.context_length ~ '-token context window' if details.context_length else '' %}
 {%- if is_chat %}
@@ -26,10 +27,12 @@
 {%- set _detail = display_name ~ ' is served by ' ~ provider_display_name ~ _ctx ~ ' and proxied through the UnitySVC gateway, which routes each request to the upstream and bills per token.' %}
 {%- set _howto = 'Reach it through the UnitySVC gateway with your own ' ~ provider_display_name ~ ' API key (the byok channel). See the code examples for setup with the OpenAI SDK, the Cohere SDK, and cURL.' %}
 {%- endif %}
-{#- Dedicated interoperability paragraph: the dual-dialect endpoint is the
-    platform differentiator and what makes services interchangeable enough to
-    sit behind the gateway's composition primitives. #}
-{%- set _interop = 'One endpoint, either dialect — send an OpenAI Chat Completions or an Anthropic Messages request and the gateway auto-detects the format, translates it for the upstream, and replies in the style you sent. Because every model on UnitySVC speaks both dialects, they are interchangeable behind a single client: swap providers without touching your code, and combine them with the gateway composition primitives — group (/g/), broadcast (/b/), chain (/c/) and failover (/f/).' %}
+{#- Dedicated interoperability paragraph. These models speak the two surfaces
+    the upstream actually serves — the OpenAI compatibility layer and the
+    native Cohere API — with no gateway translation in between
+    (unitysvc#1931): the gateway classifies each request's format and routes
+    it to the channel that accepts it. #}
+{%- set _interop = 'One endpoint, two native surfaces — send an OpenAI Chat Completions request (served by Cohere\'s compatibility layer) or a native Cohere API request, and the gateway routes each format straight to the matching upstream surface, no translation involved. The OpenAI-compatible surface keeps these models swappable behind a standard OpenAI client and composes with the gateway composition primitives — group (/g/), broadcast (/b/), chain (/c/) and failover (/f/).' %}
 {#- Rebase note: main gained the required `summary` field (unitysvc#1838)
     after this branch was cut. The teaser paragraph IS the summary, so the two
     intents compose rather than compete — `_brief` becomes `summary`, the rest
@@ -45,12 +48,12 @@
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
   "tags": ["ai", "gateway", "byok"],
-{#- For chat models, merge the dual-dialect formats into the provider's details
-    (R8); the llm_translator below exposes the OpenAI-compatible upstream in both
-    dialects. Non-chat (embedding/transcription) models keep details as-is. #}
+{#- For chat models, record the two surfaces the upstream itself serves (R8,
+    unitysvc#1931): the OpenAI compatibility layer and the native Cohere API.
+    Non-chat (embedding/transcription) models keep details as-is. #}
 {%- if is_chat %}
 {%- set _details = details.copy() %}
-{%- set _ = _details.update({"input_formats": ["openai", "anthropic"], "output_formats": ["openai_response", "anthropic_response"]}) %}
+{%- set _ = _details.update({"input_formats": ["openai", "cohere"], "output_formats": ["openai_response", "cohere_response"]}) %}
   "details": {{ _details | tojson }},
 {%- else %}
   "details": {{ details | tojson }},
@@ -64,20 +67,14 @@
       "base_url": "{{ api_base_url }}",
       "api_key": "${ customer_secrets.{{ env_api_key_name }} }",
       "rate_limits": [],
-      "routing_key": {"model": "{{ offering_name }}"}
-{#- The Anthropic SDK hardcodes /v1/messages, which the translator maps to the
-    OpenAI chat endpoint. Cohere serves that off the standard path (its
-    OpenAI-compatible surface lives under /compatibility/v1), so point the
-    translator at the real upstream path -- the OpenAI-SDK and Cohere-SDK
-    surfaces reach their own paths via the customer URL and are unaffected. #}
-{%- if is_chat %},
-      "request_transformer": {
-        "llm_translator": {
-          "direction": "anthropic_to_openai",
-          "upstream_path": "/compatibility/v1/chat/completions"
-        }
-      }
-{%- endif %}
+      "routing_key": {"model": "{{ offering_name }}"},
+{#- Explicit channel↔format link (#1789, unitysvc#1931): this channel serves
+    exactly the two surfaces the upstream speaks — OpenAI requests reach the
+    compatibility layer and native Cohere requests reach the native API, both
+    by path passthrough off the same root. No llm_translator: the Anthropic
+    dialect is NOT supported on Cohere (a request classified "anthropic"
+    matches no channel and is refused instead of mistranslated). #}
+      "request_formats": ["openai", "cohere"]
     }
   }
 }

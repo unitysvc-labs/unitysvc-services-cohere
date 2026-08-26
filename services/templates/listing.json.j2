@@ -166,24 +166,10 @@
         "meta": {"sleep_after_test": 5}
       }
     },
-    {#- Anthropic-dialect examples (R9): the upstream speaks OpenAI (Cohere's
-        Compatibility API), so specs run-tests (local_testing) calls it in
-        OpenAI form, while the gateway path speaks Anthropic and exercises the
-        llm_translator. -#}
-    "Python code example (Anthropic SDK)": {
-      "$doc_preset": {
-        "name": "llm_code_example_anthropic_to_openai_sdk",
-        "version_prefix": "/compatibility/v1",
-        "meta": {"sleep_after_test": 5}
-      }
-    },
-    "cURL code example (Anthropic style)": {
-      "$doc_preset": {
-        "name": "llm_code_example_anthropic_to_openai_shell",
-        "version_prefix": "/compatibility/v1",
-        "meta": {"sleep_after_test": 5}
-      }
-    },
+    {#- No Anthropic-dialect examples: translation is dropped on Cohere
+        (unitysvc#1931) — the catalog serves only the two surfaces the
+        upstream itself speaks, OpenAI-compatible (the presets above with the
+        /compatibility/v1 prefix) and native Cohere (the Cohere SDK example). -#}
     "Connectivity test": {
       "$doc_preset": {
         "name": "llm_connectivity",
