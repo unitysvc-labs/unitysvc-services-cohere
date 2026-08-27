@@ -4,6 +4,21 @@
   "homepage": "https://www.cohere.com/",
   "logo": "https://cohere.com/logo.svg",
   "name": "cohere",
+  "rate_limits": [
+    {
+      "description": "Self-imposed ceiling so platform test sweeps cannot saturate the account; not a published provider limit.",
+      "limit": 10,
+      "name": "cohere_concurrency",
+      "unit": "concurrent"
+    },
+    {
+      "description": "Self-imposed ceiling so platform test sweeps cannot saturate the account; not a published provider limit.",
+      "limit": 100,
+      "name": "cohere_rpm",
+      "unit": "requests",
+      "window": "minute"
+    }
+  ],
   "status": "ready",
   "terms_of_service": "https://cohere.com/terms-of-use",
   "time_created": "2025-08-25T00:00:00Z"
