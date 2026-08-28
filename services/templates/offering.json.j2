@@ -40,7 +40,7 @@
 {#- Platform capability vocabulary (unitysvc docs/capabilities.yml) — what the
     caller GETS. The populator writes this into every param file; the map here
     is the fallback for a param file that predates it. -#}
-{%- set _cap = "speech-transcribe" if is_transcription else ({"embedding": "embed"}.get(service_type, "chat")) %}
+{%- set _cap = "speech-to-text" if is_transcription else ({"embedding": "embed"}.get(service_type, "chat")) %}
   "capabilities": {{ capabilities | default([_cap]) | tojson }},
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
