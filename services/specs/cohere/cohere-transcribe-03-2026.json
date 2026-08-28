@@ -2,7 +2,7 @@
   "parameters": {
     "api_base_url": "https://api.cohere.ai",
     "capabilities": [
-      "speech-transcribe"
+      "speech-to-text"
     ],
     "description": "Cohere Transcribe 03 2026 audio transcription model.\n\nPricing — usage is billed by Cohere directly.",
     "details": {

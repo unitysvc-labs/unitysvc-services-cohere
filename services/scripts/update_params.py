@@ -263,7 +263,7 @@ class ModelSource:
         by ``is_image_embedding`` for example dispatch.
         """
         if is_transcription:
-            return ["speech-transcribe"]
+            return ["speech-to-text"]
         if service_type == "embedding":
             # `_determine_service_type` files rerankers under the embedding
             # service_type (same access pattern); the capability is what
