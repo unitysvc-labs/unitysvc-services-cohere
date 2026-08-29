@@ -2,8 +2,11 @@
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
   {#- name = <provider>/<bare> per the platform service-naming convention
-      (unitysvc PR #1196 / issue #1138). #}
-  "name": "{{ provider_name }}/{{ offering_name }}",
+      (unitysvc PR #1196 / issue #1138), rendered from the single
+      `service_name` the populate script must yield (unitysvc-sellers 0.3.1)
+      rather than recomposed here — the param file's path, the service name
+      and this field are one value, and composing it twice is how they drift. #}
+  "name": "{{ service_name }}",
 {%- if list_price %}
 {#- Price-cell copy follows the marketplace description grammar
     (unitysvc/unitysvc#1886, PR #1887):
