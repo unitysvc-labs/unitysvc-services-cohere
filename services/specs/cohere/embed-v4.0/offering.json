@@ -26,11 +26,6 @@
   "service_type": "embedding",
   "status": "ready",
   "summary": "Embed V4.0 embedding model.",
-  "tags": [
-    "ai",
-    "gateway",
-    "byok"
-  ],
   "time_created": "2026-01-26T01:30:44.495Z",
   "upstream_access_config": {
     "byok": {
