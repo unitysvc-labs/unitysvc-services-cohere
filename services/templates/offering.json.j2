@@ -44,7 +44,36 @@
   "capabilities": {{ capabilities | default([_cap]) | tojson }},
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
-  "tags": ["ai", "gateway", "byok"],
+{#- No `tags` key. unitysvc#1962 closes the tag vocabulary (docs/tags.yml) and
+    ingest now REJECTS anything outside it, which retires all three values this
+    template declared: `ai` restated service_type, `gateway` restated
+    gateway_type (DERIVED so it cannot drift), and `byok` restated the
+    enrollment channel the gateway actually routes on. That channel name
+    survives as the key of upstream_access_config below -- the routing contract
+    is untouched, only the tag value is gone.
+
+    The one tag a seller may declare, `feature:func-call`, is deliberately NOT
+    set here, and docs/tags.yml names this repo as the reason it had to exist:
+    of the repos that knew something about tool support, cohere suppressed it
+    "nothing at all". The gap is still open. Cohere's /v2/models does return a
+    per-model `features` list, but neither Cohere's API reference nor the
+    generated SDK type (`GetModelResponse.features`, documented only as "the
+    features that the model supports") enumerates its values, so keying the tag
+    off a token we have not observed would be a guess about the vocabulary; and
+    this catalog mixes command, Aya, translate, vision, reasoning, embedding
+    and transcription models, so it is not a catalog-wide fact either. Cohere's
+    own tool-use docs publish no per-model support list to check it against.
+
+    Blocked on an OBSERVED `features` payload from a live /v2/models call --
+    which is also blocked on the unfixed pagination bug there (the unpaginated
+    call returns 20 of 32 models, so an enumeration is not yet trustworthy).
+    Until then these offerings stay untagged: under-claiming is recoverable,
+    while a false tag ships a tool-calling example that answers
+    `400 invalid request: tool use is not supported by the provided model`.
+
+    Rendering no key at all is equivalent to an empty list here -- ingest's
+    compose_service_tags replaces the seller-owned half from each upload -- so
+    the legacy tags are cleared on the next upload rather than left behind. #}
 {#- For chat models, merge the dual-dialect formats into the provider's details
     (R8); the llm_translator below exposes the OpenAI-compatible upstream in both
     dialects. Non-chat (embedding/transcription) models keep details as-is. #}
