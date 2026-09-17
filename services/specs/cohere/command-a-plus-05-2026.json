@@ -4,10 +4,10 @@
     "capabilities": [
       "chat"
     ],
-    "description": "Command A Plus 05 2026 language model.\n\nPricing — usage is billed by Cohere directly at $2.5 / $10 per 1M input/output tokens.",
+    "description": "Command A Plus 05 2026 language model.\n\nPricing — usage is billed by Cohere directly at $0 / $0 per 1M input/output tokens.",
     "details": {
       "context_length": 128000,
-      "litellm_provider": "aihubmix",
+      "litellm_provider": "cohere_chat",
       "max_input_tokens": 128000,
       "max_output_tokens": 64000,
       "max_tokens": 64000,
@@ -32,7 +32,7 @@
       "price": "0",
       "type": "constant"
     },
-    "pricing_note": "$2.5 / $10 per 1M input/output tokens",
+    "pricing_note": "$0 / $0 per 1M input/output tokens",
     "provider_display_name": "Cohere",
     "service_type": "llm",
     "status": "ready"
