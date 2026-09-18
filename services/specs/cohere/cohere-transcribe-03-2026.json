@@ -27,6 +27,6 @@
     "pricing_note": null,
     "provider_display_name": "Cohere",
     "service_type": "llm",
-    "status": "ready"
+    "status": "deprecated"
   }
 }
