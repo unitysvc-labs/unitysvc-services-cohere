@@ -37,8 +37,15 @@
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
+{#- Multipart transcription requests cannot be decoded as JSON to extract a
+    model routing key. Give each transcription service a keyless route; the
+    model remains in the multipart form and is forwarded unchanged. #}
+{%- if is_transcription %}
+      "base_url": "${API_GATEWAY_BASE_URL}/{{ offering_name }}"
+{%- else %}
       "base_url": "${API_GATEWAY_BASE_URL}/{{ provider_name }}",
       "routing_key": {"model": "{{ offering_name }}"}
+{%- endif %}
     }
   },
   {#- Every document below is DERIVED from what this service is: its
@@ -65,7 +72,7 @@
       "capabilities": ["speech-to-text"],
       "formats": ["openai"],
       "upstream_dialect": "openai",
-      "params": {"version_prefix": "/compatibility/v1"},
+      "params": {"version_prefix": "/v2"},
       "sleep": 5
     }
 {%- elif is_image_embedding %}
