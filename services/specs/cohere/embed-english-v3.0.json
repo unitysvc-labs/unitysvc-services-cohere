@@ -6,10 +6,10 @@
     ],
     "description": "Embed English V3.0 embedding model.\n\nPricing — usage is billed by Cohere directly at $0.1 / $0 per 1M input/output tokens.",
     "details": {
-      "context_length": 1024,
+      "context_length": 512,
       "litellm_provider": "cohere",
-      "max_input_tokens": 1024,
-      "max_tokens": 1024,
+      "max_input_tokens": 512,
+      "max_tokens": 512,
       "metadata_sources": {
         "context_length": "litellm"
       },
