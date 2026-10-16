@@ -4,9 +4,17 @@
     "capabilities": [
       "chat"
     ],
-    "description": "C4Ai Aya Expanse 32B language model.\n\nPricing — usage is billed by Cohere directly.",
+    "description": "C4Ai Aya Expanse 32B language model.\n\nPricing — usage is billed by Cohere directly at $0.5 / $1.5 per 1M input/output tokens.",
     "details": {
-      "context_length": null,
+      "context_length": 128000,
+      "litellm_provider": "cohere_chat",
+      "max_input_tokens": 128000,
+      "max_output_tokens": 4000,
+      "max_tokens": 4000,
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "mode": "chat",
       "parameter_count": null
     },
     "display_name": "C4Ai Aya Expanse 32B",
@@ -24,7 +32,7 @@
       "price": "0",
       "type": "constant"
     },
-    "pricing_note": null,
+    "pricing_note": "$0.5 / $1.5 per 1M input/output tokens",
     "provider_display_name": "Cohere",
     "service_type": "llm",
     "status": "ready"
