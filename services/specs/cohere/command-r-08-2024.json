@@ -10,7 +10,6 @@
       "litellm_provider": "cohere_chat",
       "max_input_tokens": 128000,
       "max_output_tokens": 4096,
-      "max_tokens": 4096,
       "metadata_sources": {
         "context_length": "openrouter"
       },
