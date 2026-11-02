@@ -92,7 +92,6 @@
       "access_method": "http",
       "base_url": "{{ api_base_url }}",
       "api_key": "${ customer_secrets.{{ env_api_key_name }} }",
-      "rate_limits": [],
       "routing_key": {"model": "{{ offering_name }}"}
 {#- The Anthropic SDK hardcodes /v1/messages, which the translator maps to the
     OpenAI chat endpoint. Cohere serves that off the standard path (its
