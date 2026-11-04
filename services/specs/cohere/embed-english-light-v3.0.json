@@ -9,7 +9,6 @@
       "context_length": 512,
       "litellm_provider": "cohere",
       "max_input_tokens": 512,
-      "max_tokens": 512,
       "metadata_sources": {
         "context_length": "litellm"
       },
