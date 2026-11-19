@@ -6,7 +6,14 @@
     ],
     "description": "C4Ai Aya Vision 32B language model.\n\nPricing — usage is billed by Cohere directly.",
     "details": {
-      "context_length": null,
+      "context_length": 16384,
+      "litellm_provider": "cohere_chat",
+      "max_input_tokens": 16384,
+      "max_output_tokens": 4000,
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "mode": "chat",
       "parameter_count": null
     },
     "display_name": "C4Ai Aya Vision 32B",

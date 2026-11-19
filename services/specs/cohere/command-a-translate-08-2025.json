@@ -4,12 +4,12 @@
     "capabilities": [
       "chat"
     ],
-    "description": "Command A Translate 08 2025 language model.\n\nPricing — usage is billed by Cohere directly at $0.09 / $0.09 per 1M input/output tokens.",
+    "description": "Command A Translate 08 2025 language model.\n\nPricing — usage is billed by Cohere directly at $0 / $0 per 1M input/output tokens.",
     "details": {
-      "context_length": 256000,
-      "litellm_provider": "oci",
-      "max_input_tokens": 256000,
-      "max_output_tokens": 4000,
+      "context_length": 8000,
+      "litellm_provider": "cohere_chat",
+      "max_input_tokens": 8000,
+      "max_output_tokens": 8000,
       "metadata_sources": {
         "context_length": "litellm"
       },
@@ -31,7 +31,7 @@
       "price": "0",
       "type": "constant"
     },
-    "pricing_note": "$0.09 / $0.09 per 1M input/output tokens",
+    "pricing_note": "$0 / $0 per 1M input/output tokens",
     "provider_display_name": "Cohere",
     "service_type": "llm",
     "status": "ready"

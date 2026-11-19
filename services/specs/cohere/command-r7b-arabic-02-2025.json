@@ -6,7 +6,13 @@
     ],
     "description": "Command R7B Arabic 02 2025 language model.\n\nPricing — usage is billed by Cohere directly.",
     "details": {
-      "context_length": null,
+      "context_length": 128000,
+      "litellm_provider": "cohere_chat",
+      "max_input_tokens": 128000,
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "mode": "chat",
       "parameter_count": null
     },
     "display_name": "Command R7B Arabic 02 2025",
